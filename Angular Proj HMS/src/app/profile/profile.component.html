@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link
+rel="stylesheet"
+href="https://fonts.googleapis.com/css?family=Varela Round"
+/>
+<div class="main" >
+  <nav class="navbar navbar-expand-lg">
+    <ul>
+      <li style="color:orange;font-family:Varela Round;font-weight:medium;color:white"><a routerLink="/LabTest">Lab Test</a></li>
+        <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Dashboard" >Dashboard</a></li>
+        <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/BookAppoinment" >Book Appointment</a></li>
+        <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Profile" routerLinkActive="active" >Profile</a></li>
+        <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/AboutUs"> About</a></li>
+        <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Home">Log out</a></li>
+    </ul>
+  </nav>
+<div id = "Main-Container" style="margin-top: 50px;">
+  <div id = "Tag" style="text-align:center;font-size:25px">Profile<img src="../../assets/edit.png" (click)="Edit()" style="height:25px ; width: 20px; float: right; margin-top: 5px;"></div>
+  <br>
+  <div id = "Member">Name :{{name}}</div><br>
+  <div id = "Member">Age :{{age}}</div><br>
+  <div id = "Member">Gender :{{gender}}</div><br>
+  <div id = "Member">Email :{{emailid}}</div><br>
+  <div id = "Member">Mobile :{{mobile}}</div><br>
+  <div id = "Member">City :{{city}}</div><br>
+  <div id = "Member">State :{{state}}</div><br>
+  </div>
+</div>

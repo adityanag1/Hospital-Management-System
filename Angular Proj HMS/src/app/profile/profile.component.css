@@ -1,0 +1,233 @@
+#Main-Container{
+    border: 3px solid orange;
+    border-radius: 10px;
+    background-color:white;
+    height: 80%;
+    width: 30%;
+}
+#Member[_ngcontent-xmr-c61] {
+    margin: 7px;
+    font-size: 25px;
+    padding-left: 10px;
+}
+.main{
+    overflow: hidden;
+    /* background-image: url('../../assets/login-bg.jpg'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: fit-content;
+    width: 100%;
+    min-height: 100vh;
+    padding-left: 0%;
+    padding-top: 0px;
+}
+#Tag{
+    border-radius: 10px;
+    background-color: orange;
+    padding: 5px;
+    margin: 10px;
+    font-family :Varela Round;
+}
+#Member{
+    margin:10px;
+    font-size: 20px;
+    font-family :Varela Round;
+}
+#btn{
+margin-bottom:10px;
+}
+table {
+font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;
+
+}
+th {
+border: 1px solid #dddddd;
+background-color:lightgray;
+text-align: center;
+padding: 8px;
+}
+td {
+border: 1px solid #dddddd;
+text-align: center;
+padding: 8px;
+font-family :Varela Round;
+}
+#Table-Div{
+    margin:10px;
+    font-size: 20px;
+    height:60%;
+    overflow: scroll;
+    font-family :Varela Round;
+}
+.topnav{
+    background-color:white;
+    overflow:hidden;
+}
+.topnav a{
+    float:right;
+    color:orangered;
+    text-align:center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size:17px;
+}
+.topnav a:hover{
+    background-color:coral;
+    color:white;
+}
+.topnav a.active{
+    background-color:orange;
+    color:white;
+}
+.pdfb{
+    height: 35px; border:2px solid rgb(8, 8, 83); background-color: white;
+    border-radius: 5px;
+}
+.pdfb:hover{
+    color: white;
+    background-color: rgb(8, 8, 83);
+}
+#Main-Container{
+    height: 600px;
+    margin-top: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) ;
+    font-family :Varela Round;
+   
+}
+#Tag{
+    border-radius: 10px;
+    background-color: orange;
+    padding: 5px;
+    margin: 10px;
+    font-family :Varela Round;
+}
+#Member{
+    margin:10px;
+    font-size: 20px;
+}
+#btn{
+margin-bottom:10px;
+}
+
+
+
+
+body {
+    margin: 30px;
+    font-family :Varela Round;
+  }
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 350px;
+    font-family :Varela Round;
+  }
+  table tr th,
+  table tr td {
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    padding: 5px;
+    font-family :Varela Round;
+  }
+  table tr th:first-child,
+  table tr td:first-child {
+    border-left: 1px solid white;
+    font-family :Varela Round;
+  }
+  table tr th {
+    background: #eee;
+    border-top: 1px solid white;
+    text-align: left;
+    font-family :Varela Round;
+  }
+  
+  /* top-left border-radius */
+  table tr:first-child th:first-child {
+    border-top-left-radius: 6px;
+    font-family :Varela Round;
+  }
+  
+  /* top-right border-radius */
+  table tr:first-child th:last-child {
+    border-top-right-radius: 6px;
+    font-family :Varela Round;
+  }
+  
+  /* bottom-left border-radius */
+  table tr:last-child td:first-child {
+    border-bottom-left-radius: 6px;
+    font-family :Varela Round;
+  }
+  
+  /* bottom-right border-radius */
+  table tr:last-child td:last-child {
+    border-bottom-right-radius: 6px;
+    font-family :Varela Round;
+  }
+  button{
+    width: 110px;
+    height: 50px;
+    background-color: orange;
+         color :white;
+         padding: 10px;
+         margin: 4px 2px;
+         text-align:center;
+         display:inline-block;
+         border-radius:12px ;
+         border:none;
+         font-size: 16px;
+         font-family :Varela Round;
+         font-weight:bold;
+
+
+
+}
+.button:hover{
+    color: white;
+    background-color: rgb(252, 192, 80);
+    
+}
+nav{
+  
+    top:0px;
+    position: absolute;
+    right:30px;
+}
+a{
+    text-decoration: none;
+    color:orange;
+    font-size: 20px;
+}
+li{
+    list-style-type: none;
+    padding: 10px;
+    display: inline-block;
+}
+.article{
+    width: 320px; height:250px;padding: 20px; border: 1px solid #c9c9c9; 
+    border-radius: 10px;background-color:rgb(255, 246, 122);
+    width: 200px;
+    height: 200px;
+     border-style: solid;
+     border-color:orange;
+     border-width: 3px;
+      display:inline-block;
+      padding:20px;
+      margin-right: 30px;
+      margin-bottom: 30px;
+      font :Varela Round;
+      border-radius: 10px;
+      box-shadow: 10px 10px rgba(0, 0, 0, 0.3);
+}
+.grid {
+    margin-right: 500px;
+    text-align:left;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Create 2 columns and auto-place rows */
+}

@@ -1,0 +1,117 @@
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela Round">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+<nav class="navbar navbar-expand-lg">
+  <ul>
+    <li style="color:orange;font-family:Varela Round;font-weight:medium;color:white"><a routerLink="/LabTest">Lab Test</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Dashboard">Dashboard</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/BookAppoinment" routerLinkActive="active">Book Appointment</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Profile" >Profile</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/AboutUs"> About</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Home">Log out</a></li>
+  </ul>
+</nav>
+<div *ngIf="noeditapp==true">
+<div class="main">
+  <div class="regform">
+    <div *ngIf="isRegister" style="text-align: center; padding-top: 20px">
+      <i style="font-size: 120px" class="fa fa-user" aria-hidden="true"></i>
+      <br/>
+      <p style="font-size: 40px">Booked Successfully</p>
+    </div>
+
+    <div *ngIf="!isRegister">
+      <div style="text-align: center">
+        <p class="cen">Apppoinment Scheduler:</p>
+      </div>
+
+      <form [formGroup]="ConForm">
+        <div class="form-group">
+          <label>Appointment Description:</label><br />
+          <input
+            type="text"
+            class="w3-input"
+            placeholder="Enter Description"
+            formControlName="adesc"
+          />
+          <span
+            style="color: red"
+            *ngIf="adesc?.errors && adesc?.touched">
+            <span *ngIf="adesc?.errors?.required">Description is Required</span>
+          </span>
+        </div>
+
+        <div class="form-group">
+            <label>Appointment Date:</label><br />
+            <input
+              type="date"
+              class="w3-input"
+              placeholder="Select Date"
+              formControlName="adate"
+            />
+            <span
+              style="color: red"
+              *ngIf="adate?.errors && adate?.touched">
+              <span *ngIf="adate?.errors?.required">Date is Required</span>
+            </span>
+        </div>
+
+        <div class="form-group ">
+            <label  style="font-family:Varela Round;">Time Slot:</label>
+            <select
+            name="timeslot"
+            id="gender"
+            class="w3-input"
+            formControlName="atime"
+            style="font-family:Varela Round;">
+            <option value="11.00-11.30">11.00-11.30</option>
+            <option value="11.30-12.00">11.30-12.00</option>
+            <option value="12.30-13.00">12.30-13.00</option>
+            <option value="19.00-19.30">19.00-19.30</option>
+            <option value="19.30-20.00">19.30-20.00</option>
+            <option value="20.00-20.30">20.00-20.30</option>
+            </select>
+            <span
+            style="color: red"
+            *ngIf="atime?.errors && atime?.touched">
+            <span *ngIf="atime?.errors?.required">Time is Required</span>
+            </span>
+        </div>
+
+    <div class="form-group ">
+      
+        <label  style="font-family:Varela Round;">Dr Name:</label>
+        <select
+        class="w3-input"
+        formControlName="dname"
+        style="font-family:Varela Round;">
+        <ng-container *ngFor = "let dname of namelist">
+        <option value="{{dname}}">{{dname}}</option>
+        </ng-container>
+        </select>
+        <span
+        style="color: red"
+        *ngIf="dname?.errors && dname?.touched">
+        <span *ngIf="dname?.errors?.required">Name is Required</span>
+        </span>
+    </div>
+    
+    <div style="text-align: center">
+        <button
+        type="submit"
+        (click)="onclick()"
+        [disabled]="ConForm.invalid"
+        class="btn btn-white ">
+        Book Appointment
+        </button>
+    </div>
+      </form>
+    </div>
+
+  </div>
+
+  <div *ngIf="editapp==true">
+    <p>hello</p>
+  </div>

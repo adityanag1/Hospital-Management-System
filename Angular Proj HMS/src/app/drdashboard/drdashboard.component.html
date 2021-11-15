@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela Round">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<nav class="navbar navbar-expand-lg navbar-fixed-top">
+  <ul>
+    <!-- <li style="color:orange;font-family:Varela Round;font-weight:medium;color:white"><a routerLink="/LabTest">Lab Test</a></li> -->
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/DrDashboard" routerLinkActive="active" >Dashboard</a></li>
+      <!-- <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/BookAppoinment" (click)="Profile()"(click)="Dashboard()"(click)="BookAppoinment()">Book Appointment</a></li> -->
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/DrProfile" >Profile</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/AboutUs"> About</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Home">Log out</a></li>
+  </ul>
+</nav>
+
+<div class="row">
+  <div class="col-md-4" style="padding-top: 5px;padding-left:30px;color:orange;
+  display: inline-block;font-family :Varela Round;font-weight: bold;font-size: 50px; text-align:left;">Dr's Dashboard</div>
+  </div>
+  <div class="row">
+  <div class="col-md-3" style="color:orange;
+  font-family :Varela Round;font-weight: bold;font-size:65 px;margin-left:25px;margin-bottom:10px">Welcome {{dname}}</div>
+  </div>
+
+
+  <div *ngIf = "noapp==true" style = "text-align: center; ">
+    <article style="width: 320px; height:200px; padding: 20px; border: 1px solid #c9c9c9; border-radius: 10px;background-color: white;margin-left:20px;margin-top:20px;margin-right:auto; text-align: left">
+      <!-- <img src="" style="width:120px; height:100px; margin-top:10px" > -->
+      <div style="margin-top:10px">
+      <h3 style="font-family :Varela Round;font-weight:medium;font-size:20px">Looks like you dont have any appointment yet.</h3>
+      <!-- <h4 style="font-family :Varela Round;font-weight:medium;font-size:10px">Go to the Book Appointment page to book an appointment!</h4> -->
+      </div>
+    </article>
+  </div>
+
+  <div  class="row mb-3" *ngIf = "yesapp==true">
+    <article class="col-md-3 col-sm-6" *ngFor="let count2list of count2list">  
+    <!-- <br> -->
+    <div  class="card " style="padding: 20px; border: 1px solid #c9c9c9; border-radius: 20px;border-color: orange;background-color: white;margin-left:20px; text-align: left">
+    <div id = "Tag" style="margin-top:10px" style="text-align:center;font-size:25px; color:orange;">Upcoming Appointment</div>
+    <hr>
+        <div id = "Member">Patient Name :{{count2list.name}}</div><br>
+        <div id = "Member">Date :{{count2list.adate}}</div><br>
+        <div id = "Member">Time :{{count2list.atime}}</div><br>
+        <div id = "Member">Description :{{count2list.adesc}}</div><br>
+        <div class="text-center"><a [routerLink]="['/GenerateFile',count2list.patientId,count2list.aid]" class="btn btn-white " >Generate File</a></div>
+  </div>
+</article>
+</div>
+
+<!-- <div class="row"*ngIf = "yesapp==true">
+  <div class="col-sm-3" >
+    <div  class="card rounded-lg mx-4 my-4" *ngFor="let count2list of count2list" >
+      <div class="card-body" >
+        <h5 class="card-title" style="text-align:center;font-size:25px">Upcoming Appointment</h5>
+        <div id = "Member" class="mt-2">Patient Name :{{count2list.patientId}}</div><br>
+         <div id = "Member">Date :{{count2list.adate}}</div><br>
+        <div id = "Member">Time :{{count2list.atime}}</div><br>
+        <div id = "Member">Description :{{count2list.adesc}}</div><br>
+        <div class="text-center"><a href="#" class="btn btn-primary ">Generate File</a></div>
+      </div>
+    </div>
+  </div> -->
+  
+<!-- <table>
+      <tr >
+          <th>Patient Name</th>
+          <th>Date</th>
+          <th>Desc</th>
+          <th>time</th>
+      </tr>
+      <tr *ngFor="let count2list of count2list">
+        <td>{{name}}</td>
+          <td>{{count2list.adate}}</td>
+          <td>{{count2list.atime}}</td>
+          <td>{{count2list.adesc}}</td>
+      </tr>
+      <tr *ngFor = "let name of pnlist">
+          <td >{{name}}</td> 
+      </tr>
+      <tr *ngFor="let adate of adlist">
+        <td >{{adate}}</td>
+      </tr>
+  </table> -->

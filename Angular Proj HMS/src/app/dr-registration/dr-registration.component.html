@@ -1,0 +1,268 @@
+
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=IBM Plex Sans"
+/>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<div class="main">
+  <div class="regform">
+    <div *ngIf="isRegister" style="text-align: center; padding-top: 20px">
+      <i style="font-size: 120px" class="fa fa-user" aria-hidden="true"></i>
+      <br/>
+      <p style="font-size: 40px">Registered Successfully</p>
+    </div>
+
+    <div *ngIf="!isRegister">
+      <div style="text-align: center">
+        <p class="cen">Doctor's Registration</p>
+      </div>
+
+      <form [formGroup]="ConForm">
+        <div class="form-group">
+          <label>Full Name:</label><br />
+          <input
+            type="text"
+            class="w3-input"
+            placeholder="Enter full name"
+            name="dname"
+            formControlName="dname"
+          />
+          <span
+            style="color: red"
+            *ngIf="dname?.errors && dname?.touched">
+            <span *ngIf="dname?.errors?.required">Full Name is Required</span>
+            <span *ngIf="dname?.errors?.pattern">Incorrect Format</span>
+          </span>
+        </div>
+
+        <div style="display: flex; justify-content: left;flex-direction: row;">
+            <div class="form-group">
+                <label  style="font-family:Varela Round;">Experience:</label>
+                <input
+                type="text"
+                class="w3-input"
+                placeholder="Enter experience"
+                name="dexp"
+                style="width:300px;font-family:Varela Round;"
+                formControlName="dexp"/>
+                <span
+                    style="color: red"
+                    *ngIf="dexp?.errors && dexp?.touched">
+                    <span *ngIf="dexp?.errors?.required">Experience is Required</span>
+                    <span *ngIf="dexp?.errors?.pattern">Incorrect Format</span>
+                </span>
+            </div>
+            <span style="display:inline-block; width: 110px;"></span>
+
+            <div class="form-group ">
+                <label  style="font-family:Varela Round;">Specalization:</label>
+                <select
+                name="dspecalization"
+                id="dspecalization"
+                class="w3-input"
+                formControlName="dspecalization"
+                style="width:300px;font-family:Varela Round;">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                </select>
+                <span
+                style="color: red"
+                *ngIf="dspecalization?.errors && dspecalization?.touched">
+                <span *ngIf="dspecalization?.errors?.required">Specalization is Required</span>
+                </span>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: left;flex-direction: row;">
+            <div class="form-group">
+                <label  style="font-family:Varela Round;">Age:</label>
+                <input
+                type="text"
+                class="w3-input"
+                placeholder="Enter your age"
+                name="dage"
+                style="width:300px;font-family:Varela Round;"
+                formControlName="dage"/>
+                <span
+                    style="color: red"
+                    *ngIf="dage?.errors && dage?.touched">
+                    <span *ngIf="dage?.errors?.required">Age is Required</span>
+                    <span *ngIf="dage?.errors?.pattern">Incorrect Format</span>
+                </span>
+            </div>
+            <span style="display:inline-block; width: 110px;"></span>
+
+            <div class="form-group ">
+                <label  style="font-family:Varela Round;">Gender:</label>
+                <select
+                name="dgender"
+                id="dgender"
+                class="w3-input"
+                formControlName="dgender"
+                style="width:300px;font-family:Varela Round;">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+                </select>
+                <span
+                style="color: red"
+                *ngIf="dgender?.errors && dgender?.touched">
+                <span *ngIf="dgender?.errors?.required">Gender is Required</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number:</label>
+          <input
+            type="text"
+            class="w3-input"
+            placeholder="Enter phone number"
+            name="dmobile"
+            formControlName="dmobile"
+          />
+          <span
+            style="color: red"
+            class=""
+            *ngIf="dmobile?.errors && dmobile?.touched"
+          >
+            <span *ngIf="dmobile?.errors?.required"
+              >Phone number is Required</span
+            >
+            <span *ngIf="dmobile?.errors?.pattern"
+              >Phone number is not in desired format</span
+            >
+          </span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address:</label>
+            <input
+              type="text"
+              class="w3-input"
+              placeholder="Enter email"
+              name="demaildid"
+              formControlName="demaildid"
+            />
+            <span style="color: red" *ngIf="demaildid?.errors && demaildid?.touched">
+              <span *ngIf="demaildid?.errors?.required">Email address is Required</span>
+              <span *ngIf="demaildid?.errors?.pattern">incorrect format</span>
+            </span>
+          </div>
+        <div class="form-row" style="display: flex; justify-content: left;flex-direction: row;">
+          <div class="form-group ">
+            <label for="exampleInputEmail1">City:</label>
+            <input
+              id="Full Name"
+              name="Full Name"
+              placeholder="Eg:- Mumbai"
+              class="w3-input"
+              style="width:300px;font-family:Varela Round;"
+              type="text"
+              name="dcity"
+              formControlName="dcity"
+            />
+            <span style="color: red"
+              *ngIf="dcity?.errors && dcity?.touched">
+              <span *ngIf="dcity?.errors?.required">City is Required</span>
+            </span>
+          </div>
+          <span style="display:inline-block; width: 110px;"></span>
+          <div class="form-group col-md-6">
+            <label for="exampleInputEmail1">State:</label>
+
+            <select
+              name="dstate"
+              id="dstate"
+              class="w3-input"
+              formControlName="dstate">
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+              <option value="Daman and Diu">Daman and Diu</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Lakshadweep">Lakshadweep</option>
+              <option value="Puducherry">Puducherry</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="West Bengal">West Bengal</option>
+            </select>
+
+            <span
+              style="color: red"
+              class=""
+              *ngIf="dstate?.errors && dstate?.touched">
+              <span *ngIf="dstate?.errors?.required">State is Required</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row" style="display: flex; justify-content: left;flex-direction: row;">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Password:</label>
+            <input
+              type="password"
+              class="w3-input"
+              style="width:300px;font-family:Varela Round;"
+
+              id="inputEmail4"
+              title="Must contain at least 8 characters&#10;Must contain at least one uppercase letter&#10;Must contain at least one lowercase letter&#10;Must contain at least one number&#10;Must contain at least one special characters(!”#$%&'()*+,-./:;<=>?@[\]^_`{|}~ )"
+              name="dpassword"
+              formControlName="dpassword"
+            />
+            <span style="color: red"
+              *ngIf="dpassword?.errors && dpassword?.touched">
+              <span *ngIf="dpassword?.errors?.required">Password is Required</span>
+              <span *ngIf="dpassword?.errors?.pattern">incorrect format</span>
+            </span>
+          </div>
+          <span style="display:inline-block; width: 110px;"></span>
+          <div class="form-group col-md-6 ">
+            <label>Confirm Password:</label>
+            <input
+              type="password"
+              class="w3-input"
+              name="password2"
+              formControlName="password2"/>
+              <span  *ngIf="ConForm.controls.password2.invalid&&(ConForm.controls.password2.touched && ConForm.controls.password2.dirty)" >Password doesn't match</span>
+          </div>
+        </div>
+        <div style="text-align: center">
+          <button
+            type="submit"
+            (click)="onclick()"
+            [disabled]="ConForm.invalid"
+            class="button">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<!-- <p>generatefile works!</p> -->
+<div *ngIf="aid">
+    <span>aid</span>{{aid}}
+</div>
+<div *ngIf="pid">
+    <span>pid</span>{{pid}}
+</div>
+<div class="mx-3 my-3" id="MyDIv">
+<p >PatientId:{{patientId}}</p>
+<p>AppId:{{aId}}</p>
+<p>name:{{name}}</p>
+<p>age:{{age}}</p>
+<p>gender:{{gender}}</p>
+<p>mobile:{{mobile}}</p>
+<p>emailid:{{emailid}}</p>
+<p>date:{{adate}}</p>
+<p>time:{{atime}}</p>
+<p>desc:{{adesc}}</p>
+</div>
+<div>
+    <input class="mx-3 my-3" type="button" value="Download Report" (click)="convetToPDF()"/>
+</div>

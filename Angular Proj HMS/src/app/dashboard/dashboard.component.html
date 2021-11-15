@@ -1,0 +1,84 @@
+<br>
+<br>
+<html><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela Round">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<nav class="navbar navbar-expand-lg navbar-fixed-top">
+  <ul>
+    <li style="color:orange;font-family:Varela Round;font-weight:medium;color:white"><a routerLink="/LabTest">Lab Test</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Dashboard" routerLinkActive="active" >Dashboard</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/BookAppoinment" >Book Appointment</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Profile" >Profile</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/AboutUs"> About</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Home">Log out</a></li>
+  </ul>
+</nav>
+<div class="row">
+<div class="col-md-4" style="padding-top: 5px;padding-left:30px;color:orange;
+display: inline-block;font-family :Varela Round;font-weight: bold;font-size: 50px; text-align:left;">Dashboard</div>
+</div>
+<div class="row ">
+<div class="col-md-3 " style="color:orange;
+font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;margin-bottom:0px">Welcome {{name}}</div>
+</div>
+
+<div *ngIf = "noapp==true" style = "text-align: center; ">
+  <article style="width: 320px; height:200px; padding: 20px; border: 1px solid #c9c9c9; border-radius: 10px;background-color: white;margin-left:20px;margin-top:20px;margin-right:auto; text-align: left">
+    <!-- <img src="" style="width:120px; height:100px; margin-top:10px" > -->
+    <div style="margin-top:10px">
+    <h3 style="font-family :Varela Round;font-weight:medium;font-size:20px">Looks like you haven't booked any appointment yet.</h3>
+    <h4 style="font-family :Varela Round;font-weight:medium;font-size:10px">Go to the Book Appointment page to book an appointment!</h4>
+</div>
+</article>
+</div>
+
+<!-- <div *ngIf = "yesapp==true" id = "container" style = "text-align:left; ">
+  <br>
+<div style="width: 320px; height:300px; padding: 20px; border: 1px solid #c9c9c9; border-radius: 20px;border-color: orange;background-color: white;margin-left:20px;margin-right:auto; text-align: left">
+  <div id = "Tag" style="margin-top:10px" style="text-align:center;font-size:25px">Booked Appointment</div>
+  <br>
+  <div id = "Member">Patient Name :{{name}}</div><br>
+  <div id = "Member">Dr Name :{{dname}}</div><br>
+  <div id = "Member">Description :{{adesc}}</div><br>
+  <div id = "Member">Date :{{adate}}</div><br>
+  <div id = "Member">Time :{{atime}}</div><br>
+</div>
+</div> -->
+<!-- <div class="container-lg"> -->
+<div  class="row mb-3" *ngIf = "yesapp==true">
+  <article class="col-md-3 col-sm-6 mx-0 mt-2 mb-4" *ngFor="let count3list of count3list" >  
+  <!-- <br> -->
+  <div  class="card " style="padding: 20px; border: 1px solid #c9c9c9; border-radius: 20px;border-color: orange;background-color: white;margin-left:20px; text-align: left">
+  <div id = "Tag" style="margin-top:10px" style="text-align:center;font-size:25px; color:orange;">Booked Appointment</div>
+  <hr>
+      <div id = "Member">Doctor Name :{{count3list.dname}}</div><br>
+      <div id = "Member">Date :{{count3list.adate}}</div><br>
+      <div id = "Member">Time :{{count3list.atime}}</div><br>
+      <div id = "Member">Description :{{count3list.adesc}}</div><br>
+      <!-- (click)="EditApp()" [routerLink]="['/GenerateFile',count2list.patientId,count2list.aid]" -->
+      <div class="text-center"><a class="btn btn-white" [routerLink]="['/BookAppoinment',count3list.aid]">Edit Appoinment</a></div>
+  </div>
+</article>
+</div>
+<!-- </div> -->
+<p style="color:orange;
+font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;margin-bottom:0px">Previous Appointments</p>
+
+<!-- <div class="container-lg"> -->
+
+<div  class="row mb-3" *ngIf = "beforeapp==true">
+  <article class="col-md-3 col-sm-6 mt-2 mb-4 " *ngFor="let countlist of countlist" >  
+  <!-- <br> -->
+  <div  class="card " style="padding: 20px; border: 1px solid #c9c9c9; border-radius: 20px;border-color: grey;background-color: white;margin-left:20px; text-align: left">
+  <div id = "Tag" style="margin-top:10px" style="text-align:center;font-size:25px; color:grey;">Booked Appointment</div>
+  <hr>
+      <div id = "Member">Doctor Name :{{countlist.dname}}</div><br>
+      <div id = "Member">Date :{{countlist.adate}}</div><br>
+      <div id = "Member">Time :{{countlist.atime}}</div><br>
+      <div id = "Member">Description :{{countlist.adesc}}</div><br>
+      <!-- [routerLink]="['/GenerateFile',count2list.patientId,count2list.aid]" -->
+      <div class="text-center"><a  class="btn btn-secondary " >Get File</a></div>
+  </div>
+</article>
+</div>
+<!-- </div> -->

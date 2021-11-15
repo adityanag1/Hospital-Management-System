@@ -1,0 +1,37 @@
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela Round">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="main">
+    
+    <div style="text-align:center">
+    <div  class="regform" style = " border-color: orange;border-style: solid;">      
+        <div style="text-align: center;">
+          <br>
+          <br>
+            <p class="cen" style="color:orange;font-size: xx-large;" >Doctors Login</p>
+          <br>
+        </div>
+        <form [formGroup]="ConForm" >
+            <div class="form-group">
+                <label for="exampleInputEmail1" style="font-family: Varela Round;">Email address:</label>
+                <input type="demail" class="w3-input"  name="demail" formControlName="demaildid">
+                <div *ngIf="!ConForm.get('demaildid')?.valid &&(ConForm.get('demaildid')?.dirty||ConForm.get('demaildid')?.touched)" class="error">
+                  <div *ngIf="ConForm.get('demaildid')?.errors?.required">
+                  <small class="text-danger">Please Enter your Email ID</small>
+                  </div>
+            </div>
+
+              </div>
+              
+                <div class="form-group col-md-12">
+                    <label for="exampleInputEmail1" style="font-family: Varela Round;">Password:</label>
+                  <input type="password" class="w3-input" id="inputEmail4"  name="dpassword" formControlName="dpassword">
+                    <div *ngIf="!ConForm.get('dpassword')?.valid &&(ConForm.get('dpassword')?.dirty||ConForm.get('dpassword')?.touched)" class="error">
+                      <div *ngIf="ConForm.get('dpassword')?.errors?.required">
+                      <small class="text-danger">Please Enter your Password</small>
+                      </div>
+                </div>    
+                </div>  
+                  <div style="text-align: center;">
+                    <button class = "button" (click)="onclick()">Login</button>
+                </div>
