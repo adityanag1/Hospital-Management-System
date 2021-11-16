@@ -44,6 +44,10 @@ namespace HospitalApiFinal.Controllers
             }).ToListAsync();
         }
 
+        
+
+
+
         // GET: api/Apps/5
         [HttpGet("{id}")]
         public async Task<ActionResult<App>> GetApp(int id)

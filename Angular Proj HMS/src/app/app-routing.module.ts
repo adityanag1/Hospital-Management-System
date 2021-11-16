@@ -27,6 +27,7 @@ const routes: Routes = [
   {path:"DrLogin",component:DrLoginComponent},
   {path:"Profile",component:ProfileComponent},
   {path:"DrDashboard",component:DrdashboardComponent},
+  {path:"DrDashboard/:aid",component:DrdashboardComponent},
   {path:"BookAppoinment",component:BookappoinmentComponent},
   {path:"BookAppoinment/:aid",component:BookappoinmentComponent},
   {path:"EditProfile",component:EditprofileComponent},

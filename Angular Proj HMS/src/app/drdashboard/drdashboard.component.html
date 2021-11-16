@@ -47,6 +47,21 @@
 </article>
 </div>
 
+<div  class="row mb-3" *ngIf = "removeapp==true">
+  <article class="col-md-3 col-sm-6" *ngFor="let count3list of count3list">  
+  <!-- <br> -->
+  <div  class="card " style="padding: 20px; border: 1px solid #c9c9c9; border-radius: 20px;border-color: orange;background-color: white;margin-left:20px; text-align: left">
+  <div id = "Tag" style="margin-top:10px" style="text-align:center;font-size:25px; color:orange;">Upcoming Appointment</div>
+  <hr>
+      <div id = "Member">Patient Name :{{count3list.name}}</div><br>
+      <div id = "Member">Date :{{count3list.adate}}</div><br>
+      <div id = "Member">Time :{{count3list.atime}}</div><br>
+      <div id = "Member">Description :{{count3list.adesc}}</div><br>
+      <div class="text-center"><a [routerLink]="['/GenerateFile',count3list.patientId,count3list.aid]" class="btn btn-white " >Generate File</a></div>
+</div>
+</article>
+</div>
+
 <!-- <div class="row"*ngIf = "yesapp==true">
   <div class="col-sm-3" >
     <div  class="card rounded-lg mx-4 my-4" *ngFor="let count2list of count2list" >

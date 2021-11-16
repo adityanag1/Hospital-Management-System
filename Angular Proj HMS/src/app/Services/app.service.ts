@@ -19,7 +19,12 @@ export class AppService {
   }
   postApp(app: Appoinment): Observable<Appoinment> {
     return this.httpClient.post<Appoinment>(this.ApiUrl, JSON.stringify(app), this.httpOptions)
-  }   
+  }  
+  
+  putApp(id:number,app: Appoinment): Observable<Appoinment> {
+    return this.httpClient.put<Appoinment>(this.ApiUrl+"/"+id, JSON.stringify(app), this.httpOptions)
+  }
+
   getApp(): Observable<Appoinment[]> {
     return this.httpClient.get<Appoinment[]>(this.ApiUrl+'/GetPatientApps' ) 
   }

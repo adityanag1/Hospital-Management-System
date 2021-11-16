@@ -20,6 +20,7 @@ namespace HospitalApiFinal.Models
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<App> Apps { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
+        public virtual DbSet<Filet> Filets { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
 
@@ -170,6 +171,67 @@ namespace HospitalApiFinal.Models
                     .WithMany(p => p.Doctors)
                     .HasForeignKey(d => d.PatientId)
                     .HasConstraintName("FK__doctor__patient___38996AB5");
+            });
+
+            modelBuilder.Entity<Filet>(entity =>
+            {
+                entity.HasKey(e => e.Fid)
+                    .HasName("PK__filet__D9908D64320FFA55");
+
+                entity.ToTable("filet");
+
+                entity.Property(e => e.Fid).HasColumnName("fid");
+
+                entity.Property(e => e.Aid).HasColumnName("aid");
+
+                entity.Property(e => e.Bill)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("bill");
+
+                entity.Property(e => e.Bp)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("bp");
+
+                entity.Property(e => e.Did).HasColumnName("did");
+
+                entity.Property(e => e.Heartrate)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("heartrate");
+
+                entity.Property(e => e.Height)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("height");
+
+                entity.Property(e => e.Medicinepres)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("medicinepres");
+
+                entity.Property(e => e.PatientId).HasColumnName("patient_id");
+
+                entity.Property(e => e.Weight)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("weight");
+
+                entity.HasOne(d => d.AidNavigation)
+                    .WithMany(p => p.Filets)
+                    .HasForeignKey(d => d.Aid)
+                    .HasConstraintName("FK__filet__aid__5CD6CB2B");
+
+                entity.HasOne(d => d.DidNavigation)
+                    .WithMany(p => p.Filets)
+                    .HasForeignKey(d => d.Did)
+                    .HasConstraintName("FK__filet__did__5EBF139D");
+
+                entity.HasOne(d => d.Patient)
+                    .WithMany(p => p.Filets)
+                    .HasForeignKey(d => d.PatientId)
+                    .HasConstraintName("FK__filet__patient_i__5DCAEF64");
             });
 
             modelBuilder.Entity<Patient>(entity =>

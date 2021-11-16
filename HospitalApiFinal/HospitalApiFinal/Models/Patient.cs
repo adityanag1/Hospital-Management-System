@@ -11,6 +11,7 @@ namespace HospitalApiFinal.Models
         {
             Apps = new HashSet<App>();
             Doctors = new HashSet<Doctor>();
+            Filets = new HashSet<Filet>();
             Tests = new HashSet<Test>();
         }
 
@@ -26,6 +27,7 @@ namespace HospitalApiFinal.Models
 
         public virtual ICollection<App> Apps { get; set; }
         public virtual ICollection<Doctor> Doctors { get; set; }
+        public virtual ICollection<Filet> Filets { get; set; }
         public virtual ICollection<Test> Tests { get; set; }
     }
 }

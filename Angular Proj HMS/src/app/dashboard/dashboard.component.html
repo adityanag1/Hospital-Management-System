@@ -32,19 +32,7 @@ font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;marg
 </article>
 </div>
 
-<!-- <div *ngIf = "yesapp==true" id = "container" style = "text-align:left; ">
-  <br>
-<div style="width: 320px; height:300px; padding: 20px; border: 1px solid #c9c9c9; border-radius: 20px;border-color: orange;background-color: white;margin-left:20px;margin-right:auto; text-align: left">
-  <div id = "Tag" style="margin-top:10px" style="text-align:center;font-size:25px">Booked Appointment</div>
-  <br>
-  <div id = "Member">Patient Name :{{name}}</div><br>
-  <div id = "Member">Dr Name :{{dname}}</div><br>
-  <div id = "Member">Description :{{adesc}}</div><br>
-  <div id = "Member">Date :{{adate}}</div><br>
-  <div id = "Member">Time :{{atime}}</div><br>
-</div>
-</div> -->
-<!-- <div class="container-lg"> -->
+
 <div  class="row mb-3" *ngIf = "yesapp==true">
   <article class="col-md-3 col-sm-6 mx-0 mt-2 mb-4" *ngFor="let count3list of count3list" >  
   <!-- <br> -->
@@ -55,13 +43,102 @@ font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;marg
       <div id = "Member">Date :{{count3list.adate}}</div><br>
       <div id = "Member">Time :{{count3list.atime}}</div><br>
       <div id = "Member">Description :{{count3list.adesc}}</div><br>
-      <!-- (click)="EditApp()" [routerLink]="['/GenerateFile',count2list.patientId,count2list.aid]" -->
-      <div class="text-center"><a class="btn btn-white" [routerLink]="['/BookAppoinment',count3list.aid]">Edit Appoinment</a></div>
+      <!-- (click)="EditApp()" [routerLink]="['/GenerateFile',count2list.patientId,count2list.aid]" [routerLink]="['/BookAppoinment',count3list.aid]"-->
+      <div class="text-center"><a class="btn btn-white" (click)="EditApp(count3list.aid)">Edit Appoinment</a></div>
   </div>
 </article>
 </div>
+
+<div  class="row mb-3" *ngIf = "flipcard==true">
+  <article class="col-md-3 col-sm-6 mx-0 mt-2 mb-4" *ngFor="let count3list of count3list" >  
+  <!-- <br> -->
+  <div  class="card " style="padding: 20px; border: 1px solid #c9c9c9; border-radius: 20px;border-color: orange;background-color: white;margin-left:20px; text-align: left">
+  <div id = "Tag" style="margin-top:10px" style="text-align:center;font-size:25px; color:orange;">Edit Appointment</div>
+  <hr>
+      <!-- <div id = "Member">Doctor Name :{{count3list.dname}}</div><br>
+      <div id = "Member">Date :{{count3list.adate}}</div><br>
+      <div id = "Member">Time :{{count3list.atime}}</div><br>
+      <div id = "Member">Description :{{count3list.adesc}}</div><br> -->
+      <!-- (click)="EditApp()" [routerLink]="['/GenerateFile',count2list.patientId,count2list.aid]" [routerLink]="['/BookAppoinment',count3list.aid]"-->
+      <form [formGroup]="ConForm">
+        <div class="form-group">
+          <label>Appointment Description:</label><br />
+          <input
+            type="text"
+            class="w3-input"
+            placeholder="{{count3list.adesc}}"
+            formControlName="desc"
+          />
+          <span
+        style="color: red"
+        *ngIf="desc?.errors && desc?.touched">
+        <span *ngIf="desc?.errors?.required">Description is Required</span>
+        </span>
+        </div>
+
+        <div class="form-group">
+            <label>Appointment Date:</label><br />
+            <input
+              type="date"
+              class="w3-input"
+              formControlName="tdate"
+            />
+            <span
+        style="color: red"
+        *ngIf="tdate?.errors && tdate?.touched">
+        <span *ngIf="tdate?.errors?.required">Date is Required</span>
+        </span>
+        </div>
+
+        <div class="form-group ">
+            <label  style="font-family:Varela Round;">Time Slot:</label>
+            <select
+            name="timeslot"
+            id="gender"
+            class="w3-input"
+            formControlName="time"
+            style="font-family:Varela Round;">
+            <option value="11.00-11.30">11.00-11.30</option>
+            <option value="11.30-12.00">11.30-12.00</option>
+            <option value="12.30-13.00">12.30-13.00</option>
+            <option value="19.00-19.30">19.00-19.30</option>
+            <option value="19.30-20.00">19.30-20.00</option>
+            <option value="20.00-20.30">20.00-20.30</option>
+            </select>
+            <span
+        style="color: red"
+        *ngIf="time?.errors && time?.touched">
+        <span *ngIf="time?.errors?.required">Time is Required</span>
+        </span>
+        </div>
+
+    <div class="form-group ">
+      
+        <label  style="font-family:Varela Round;">Dr Name:</label>
+        <select
+        class="w3-input"
+        formControlName="tname"
+        style="font-family:Varela Round;">
+        <ng-container *ngFor = "let tname of namelist">
+        <option value="{{tname}}">{{tname}}</option>
+        </ng-container>
+        </select>
+        <span
+        style="color: red"
+        *ngIf="tname?.errors && tname?.touched">
+        <span *ngIf="tname?.errors?.required">Name is Required</span>
+        </span>
+    </div>
+      <div class="text-center"><button class="btn btn-white text-center" 
+        [disabled]="ConForm.invalid" (click)="SaveChange(count3list.aid)">Save</button>
+      <button (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+    </div>
+</article>
+</div>
 <!-- </div> -->
-<p style="color:orange;
+<p *ngIf = "beforeapp==true" style="color:orange;
 font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;margin-bottom:0px">Previous Appointments</p>
 
 <!-- <div class="container-lg"> -->
@@ -77,8 +154,54 @@ font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;marg
       <div id = "Member">Time :{{countlist.atime}}</div><br>
       <div id = "Member">Description :{{countlist.adesc}}</div><br>
       <!-- [routerLink]="['/GenerateFile',count2list.patientId,count2list.aid]" -->
-      <div class="text-center"><a  class="btn btn-secondary " >Get File</a></div>
+      <div class="text-center"><a  class="btn btn-secondary"  (click)="GetFile(countlist.aid)">See File</a>
+       
+        <!-- <button  class="btn btn-secondary"  (click)="convetToPDF()">Download</button> -->
+      </div>
   </div>
 </article>
 </div>
 <!-- </div> -->
+<!-- <div id="printfile" > -->
+  <!-- <div *ngIf="print==true"> -->
+  <!-- <div *ngFor="let filelist of filelist" >
+    <p>{{filelist.height}}</p>
+    <p>{{filelist.name}}</p>
+    <p>{{filelist.adesc}}</p> -->
+  <!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<p *ngIf = "print==true" style="color:orange;
+font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;margin-bottom:0px">Previous Appointments</p>
+
+<div  *ngIf="print==true" class="row mb-3" id="printfile">
+  <article class="col-md-3 col-sm-6 mt-2 mb-4 " *ngFor="let filelist of filelist" >  
+  <!-- <br> -->
+  <div  class="card " style="padding: 20px; border: 1px solid #c9c9c9; border-radius: 20px;border-color: grey;background-color: white;margin-left:20px; text-align: left">
+  <div id = "Tag" style="margin-top:10px" style="text-align:center;font-size:25px; color:grey;">{{filelist.name}} File</div>
+  <hr>
+      <div id = "Member">Name :{{filelist.name}}</div><br>
+      <div id = "Member">Age :{{filelist.age}}</div><br>
+      <div id = "Member">Gender :{{filelist.gender}}</div><br>
+      <div id = "Member">Mobileno :{{filelist.mobile}}</div><br>
+      <div id = "Member">Date :{{filelist.adate}}</div><br>
+      <div id = "Member">Time :{{filelist.atime}}</div><br>
+      <div id = "Member">Height :{{filelist.height}}</div><br>
+      <div id = "Member">Weight :{{filelist.weight}}</div><br>
+      <div id = "Member">Heart Rate :{{filelist.heartrate}}</div><br>
+      <div id = "Member">BP :{{filelist.bp}}</div><br>
+      <div id = "Member">Medicine Prescription :{{filelist.medicinepres}}</div><br>
+      <div id = "Member">Bill :{{filelist.bill}}</div><br>
+
+    
+      <!-- [routerLink]="['/GenerateFile',count2list.patientId,count2list.aid]" -->
+      <div class="text-center"><a  class="btn btn-secondary"  (click)="convetToPDF()">Get File</a>
+       
+        <!-- <button  class="btn btn-secondary"  (click)="convetToPDF()">Download</button> -->
+      </div>
+  </div>
+</article>
+</div>
+
+
+

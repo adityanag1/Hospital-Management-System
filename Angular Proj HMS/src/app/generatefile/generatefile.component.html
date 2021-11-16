@@ -1,11 +1,24 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela Round">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 <!-- <p>generatefile works!</p> -->
-<div *ngIf="aid">
+<!-- <div *ngIf="aid">
     <span>aid</span>{{aid}}
 </div>
 <div *ngIf="pid">
     <span>pid</span>{{pid}}
-</div>
-<div class="mx-3 my-3" id="MyDIv">
+</div> -->
+
+<nav class="navbar navbar-expand-lg navbar-fixed-top">
+  <ul>
+    <!-- <li style="color:orange;font-family:Varela Round;font-weight:medium;color:white"><a routerLink="/LabTest">Lab Test</a></li> -->
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/DrDashboard">Dashboard</a></li>
+      <!-- <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/BookAppoinment" (click)="Profile()"(click)="Dashboard()"(click)="BookAppoinment()">Book Appointment</a></li> -->
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/DrProfile" >Profile</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/AboutUs"> About</a></li>
+      <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Home">Log out</a></li>
+  </ul>
+</nav>
+<!-- <div class="mx-3 my-3" id="MyDIv">
 <p >PatientId:{{patientId}}</p>
 <p>AppId:{{aId}}</p>
 <p>name:{{name}}</p>
@@ -16,7 +29,158 @@
 <p>date:{{adate}}</p>
 <p>time:{{atime}}</p>
 <p>desc:{{adesc}}</p>
-</div>
-<div>
+</div> -->
+
+
+<div class="main">
+    <div class="regform">
+      <div *ngIf="isRegister" style="text-align: center; padding-top: 20px">
+        <i style="font-size: 120px" class="fa fa-user" aria-hidden="true"></i>
+        <br/>
+        <p style="font-size: 40px">Booked Successfully</p>
+      </div>
+  
+      <div *ngIf="!isRegister">
+        <div style="text-align: center">
+          <p class="cen">Generate File For:</p>
+        </div>
+
+    <div class="row">
+        <div class="col-md-4 mt-2 mb-2">
+            Patient Name :{{name}}
+        </div>
+        <div class="col-md-4 mt-2 mb-2">
+            Age :{{age}}
+        </div>
+        <div class="col-md-4 mt-2 mb-2">
+            Gender :{{gender}}
+        </div>
+        <div class="col-md-6 mx-2 mt-2 mb-2 text-left ">
+            Email Id :{{emailid}}
+        </div>
+        <div class="col-md-4  mt-2 mb-2 ">
+            Phone No :{{mobile}}
+        </div>
+        <div class="col-md-5 mt-2 mb-2 text-left">
+            Appointment Date :{{adate}}
+        </div>
+        <div class="col-md-5 mt-2 mb-2">
+            Appointment Time :{{atime}}
+        </div>
+    </div>
+
+        <form [formGroup]="ConForm">
+            <div class="row">
+          <div class="form-group col-md-4" >
+            <label>Height:</label><br />
+            <input
+              type="text"
+              class="w3-input"
+              style="width:300px;font-family:Varela Round;"
+              placeholder="Enter height"
+              formControlName="height"
+            />
+            <span
+              style="color: red"
+              *ngIf="height?.errors && height?.touched">
+              <span *ngIf="height?.height?.required">Height is Required</span>
+            </span>
+          </div>
+          <span style="display:inline-block; width: 110px;"></span>
+          <div class="form-group col-md-4">
+              <label>Weight:</label><br />
+              <input
+                type="text"
+                style="width:300px;font-family:Varela Round;"
+                class="w3-input"
+                placeholder="Enter Weight"
+                formControlName="weight"
+              />
+              <span
+                style="color: red"
+                *ngIf="weight?.errors && weight?.touched">
+                <span *ngIf="weight?.errors?.required">Weight is Required</span>
+              </span>
+          </div>
+        </div>
+  <div class="row">
+          <div class="form-group col-md-4 ">
+              <label  style="font-family:Varela Round;">Blood Pressure:</label>
+              <input
+                type="text"
+                class="w3-input"
+                style="width:300px;font-family:Varela Round;"
+                placeholder="Enter Blood Pressure"
+                formControlName="bp"
+              />
+              <span
+                style="color: red"
+                *ngIf="bp?.errors && bp?.touched">
+                <span *ngIf="bp?.errors?.required">Blood Pressure is Required</span>
+              </span>
+          </div>
+          <span style="display:inline-block; width: 110px;"></span>
+      <div class="form-group col-md-4 ">
+        
+          <label  style="font-family:Varela Round;">Heart Rate:</label>
+          <input
+                type="text"
+                class="w3-input"
+                placeholder="Enter Heart Rate"
+                style="width:300px;font-family:Varela Round;"
+                formControlName="heartrate"
+              />
+          <span
+          style="color: red"
+          *ngIf="heartrate?.errors && heartrate?.touched">
+          <span *ngIf="heartrate?.errors?.required">Heart Rate is Required</span>
+          </span>
+      </div>
+    </div>
+      <div class="form-group ">
+        
+        <label  style="font-family:Varela Round;">Medicine Prescription:</label>
+        <input
+              type="text"
+              class="w3-input"
+              placeholder="Enter Medicine Prescription"
+              formControlName="medicinepres"
+            />
+        <!-- <span
+        style="color: red"
+        *ngIf="medicinepres?.errors && medicinepres?.touched"> -->
+        <!-- <span *ngIf="medicinepres?.errors?.required"> is Required</span> -->
+        <!-- </span> -->
+    </div>
+
+    <div class="form-group ">
+        
+        <label  style="font-family:Varela Round;">Total Bill:</label>
+        <input
+              type="text"
+              class="w3-input"
+              placeholder="Enter your charges"
+              formControlName="bill"
+            />
+        <span
+        style="color: red"
+        *ngIf="bill?.errors && bill?.touched">
+        <span *ngIf="bill?.errors?.required">Enter your charges</span>
+        </span>
+    </div>
+      
+      <div class="text-center">
+          <button
+          type="submit"
+          (click)="onclick()"
+          [routerLink]="['/DrDashboard',aId]"
+          [disabled]="ConForm.invalid"
+          class="btn btn-white ">
+          Generate File
+          </button>
+      </div>
+        </form>
+      </div>
+      <!-- <div>
     <input class="mx-3 my-3" type="button" value="Download Report" (click)="convetToPDF()"/>
-</div>
+</div> -->
