@@ -10,9 +10,8 @@
     font-size: 25px;
     padding-left: 10px;
 }
-.main{
+/* .main{
     overflow: hidden;
-    /* background-image: url('../../assets/login-bg.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     height: fit-content;
@@ -20,7 +19,7 @@
     min-height: 100vh;
     padding-left: 0%;
     padding-top: 0px;
-}
+} */
 #Tag{
     border-radius: 10px;
     background-color: orange;
@@ -90,7 +89,7 @@ font-family :Varela Round;
     background-color: rgb(8, 8, 83);
 }
 #Main-Container{
-    height: 600px;
+    height: 756px;
     margin-top: 30px;
     position: absolute;
     top: 50%;
@@ -231,3 +230,6 @@ li{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; /* Create 2 columns and auto-place rows */
 }
+
+
+

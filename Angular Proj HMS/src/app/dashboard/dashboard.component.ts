@@ -199,7 +199,6 @@ console.log(this.ConForm.value)
         return
       } 
     }) 
-  
   }
   
   public convetToPDF()
@@ -208,8 +207,8 @@ console.log(this.ConForm.value)
     const data = document.getElementById('printfile');
     html2canvas(data!).then(canvas => {
     // Few necessary setting options
-    var imgWidth = 210;
-    var pageHeight = 295;
+    var imgWidth = 500;
+    var pageHeight = 500;
     var imgHeight = canvas.height * imgWidth / canvas.width;
     var heightLeft = imgHeight;
 

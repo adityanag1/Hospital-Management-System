@@ -42,4 +42,8 @@ export class PatientloginService {
   setPatient(patient: Patient){
     sessionStorage.setItem('patient',JSON.stringify(patient))
   }
+
+  putPatient(id:number,patient: Patient): Observable<Patient> {
+    return this.httpClient.put<Patient>(this.getus+"/"+id, JSON.stringify(patient), this.httpOptions)
+  }
 }

@@ -38,6 +38,7 @@ export class GeneratefileComponent implements OnInit {
   fid!:any ;
   data:any;
 
+
   
 
   constructor(public service5:FileService ,public service4:DoctorloginService,private formbuilder: FormBuilder,public service:PatientDetailsService,public service2:FileService, private _Activatedroute:ActivatedRoute,public service1:AppService,public service3:PatientloginService) { }
@@ -50,9 +51,14 @@ export class GeneratefileComponent implements OnInit {
     // this.dname=doctordetails.dname
     // console.log(this.patientid)
     this.service.patientdetailid.subscribe(a=>{
+    console.log(a)
     this.aid=a.aid
-    this.pid=a.patientId
-    })
+    this.pid=a.patientId  
+    });
+    // this.service.patientdetailid.subscribe(a=>{
+    // this.aid=a.aid
+    // this.pid=a.patientId
+    // })
     this._Activatedroute.paramMap.subscribe(params => { 
       console.log(params)
       this.patientId = params.get('patientId'); 

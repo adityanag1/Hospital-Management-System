@@ -1,8 +1,6 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link
-rel="stylesheet"
-href="https://fonts.googleapis.com/css?family=Varela Round"
-/>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela Round">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 <div class="main" >
   <nav class="navbar navbar-expand-lg">
     <ul>
@@ -14,7 +12,7 @@ href="https://fonts.googleapis.com/css?family=Varela Round"
         <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Home">Log out</a></li>
     </ul>
   </nav>
-<div id = "Main-Container" style="margin-top: 50px;">
+<div id = "Main-Container"  style="margin-top: 50px; height:600px;" *ngIf="showprofile==true">
   <div id = "Tag" style="text-align:center;font-size:25px">Profile<img src="../../assets/edit.png" (click)="Edit()" style="height:25px ; width: 20px; float: right; margin-top: 5px;"></div>
   <br>
   <div id = "Member">Name :{{name}}</div><br>
@@ -26,3 +24,201 @@ href="https://fonts.googleapis.com/css?family=Varela Round"
   <div id = "Member">State :{{state}}</div><br>
   </div>
 </div>
+
+
+<div class="container col-md-4 border border-warning rounded" style="margin-top:100px; " *ngIf="editprofile==true">
+  <div id="Tag" style="text-align:center;font-size:25px">Edit Profile</div>
+  <br>
+  <div class="main">
+    <div class="regform">
+      <!-- <div *ngIf="isRegister" style="text-align: center; padding-top: 20px">
+        <i style="font-size: 120px" class="fa fa-user" aria-hidden="true"></i>
+        <br/>
+        <p style="font-size: 40px">Registered Successfully</p>
+      </div> -->
+  
+      <!-- <div *ngIf="!isRegister">
+        <div style="text-align: center">
+          <p class="cen">Patient Registration</p>
+        </div> -->
+  
+        <form [formGroup]="ConForm">
+          <div class="form-group">
+            <div id = "Member"><label>Full Name:</label><br />
+            <input
+              type="text"
+              class="w3-input"
+              placeholder="{{name}}"
+              name="name"
+              formControlName="pname"
+            /></div>
+            <span
+              style="color: red"
+              *ngIf="pname?.errors && pname?.touched">
+              <span *ngIf="pname?.errors?.required">Full Name is Required</span>
+              <span *ngIf="pname?.errors?.pattern">Incorrect Format</span>
+            </span>
+          </div>
+          <div >
+              <div class="form-group">
+                <div id = "Member"><label  style="font-family:Varela Round;">Age:</label>
+                  <input
+                  type="text"
+                  class="w3-input"
+                  placeholder="{{age}}"
+                  name="age"
+                 value="{{agee}}"
+                  formControlName="page"/></div>
+                  <span
+                      style="color: red"
+                      *ngIf="page?.errors && page?.touched">
+                      <span *ngIf="page?.errors?.required">Age is Required</span>
+                      <span *ngIf="page?.errors?.pattern">Incorrect Format</span>
+                  </span>
+              </div>
+             
+  
+              <div class="form-group ">
+                <div id = "Member"><label  style="font-family:Varela Round;">Gender:</label>
+                  <select
+                  name="gender"
+                  id="gender"
+                  class="w3-input"
+                  formControlName="pgender"
+                  >
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Others">Others</option>
+                  </select>
+                </div>
+                  <span
+                  style="color: red"
+                  *ngIf="pgender?.errors && pgender?.touched">
+                  <span *ngIf="pgender?.errors?.required">Gender is Required</span>
+                  </span>
+              </div>
+          </div>
+  
+          
+  
+          <div class="form-group">
+            <div id = "Member"><label>Phone Number:</label>
+            <input
+              type="text"
+              class="w3-input"
+              placeholder="{{mobile}}"
+              name="mobile"
+              formControlName="pmobile"
+            /></div>
+            <span
+              style="color: red"
+              class=""
+              *ngIf="pmobile?.errors && pmobile?.touched"
+            >
+              <span *ngIf="pmobile?.errors?.required"
+                >Phone number is Required</span
+              >
+              <span *ngIf="pmobile?.errors?.pattern"
+                >Phone number is not in desired format</span
+              >
+            </span>
+          </div>
+          <div class="form-group">
+            <div id = "Member"><label for="exampleInputEmail1">Email address:</label>
+              <input
+                type="emailid"
+                class="w3-input"
+                placeholder="{{emailid}}"
+                name="emailid"
+                formControlName="pemailid"
+              /></div>
+              <span style="color: red" *ngIf="pemailid?.errors && pemailid?.touched">
+                <span *ngIf="pemailid?.errors?.required">Email address is Required</span>
+                <span *ngIf="pemailid?.errors?.pattern">incorrect format</span>
+              </span>
+            </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <div id = "Member"> <label for="exampleInputEmail1">City:</label>
+              <input
+                
+                placeholder="{{city}}"
+                class="w3-input"
+                formControlName="pcity"
+              /></div>
+              <span style="color: red"
+                *ngIf="pcity?.errors && pcity?.touched">
+                <span *ngIf="pcity?.errors?.required">City is Required</span>
+              </span>
+            </div>
+            <div class="form-group col-md-12">
+              <div id = "Member"><label for="exampleInputEmail1">State:</label>
+  
+              <select
+                name="state"
+                id="state"
+                readonly
+                class="w3-input"
+                formControlName="pstate">
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                <option value="Daman and Diu">Daman and Diu</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Puducherry">Puducherry</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+              </select>
+            </div>
+              <span
+                style="color: red"
+                class=""
+                *ngIf="pstate?.errors && pstate?.touched">
+                <span *ngIf="pstate?.errors?.required">State is Required</span>
+              </span>
+            </div>
+          </div>
+ 
+          <div style="text-align: center">
+            <button
+              type="submit"
+             (click)="saveedit()"
+              [disabled]="ConForm.invalid"
+              class="button">
+              Update
+            </button>
+            <button (click)="cancel()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<!-- </div> -->
