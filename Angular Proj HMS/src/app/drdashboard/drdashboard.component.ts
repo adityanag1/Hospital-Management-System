@@ -50,6 +50,7 @@ export class DrdashboardComponent implements OnInit {
         this.yesapp=false;
         return;
     }
+
     console.log(this.todaysDate)
     let date = JSON.stringify(this.todaysDate)
     this.date = date.slice(1,11)
@@ -57,7 +58,7 @@ export class DrdashboardComponent implements OnInit {
     // this.yesapp=true;
     
     this.count2list=data.filter(a=>a.did===doctor.did);
-    this.count2list=this.count2list.filter(a=>a.adate>=this.date);
+    this.count2list=this.count2list.filter(a=>a.adate==this.date);
     // this.count2list=this.count2list.filter(a=>a.aId!==a.aid)
     console.log(this.aId)
     console.log(this.aidlist)
@@ -96,6 +97,6 @@ export class DrdashboardComponent implements OnInit {
           this.noapp=true;
         }
     }
-    }) 
+    })
   }
 }

@@ -17,5 +17,4 @@ signup=  () => {
   console.log('signup');
   this.router.navigate(['/DrRegistration']);
 };
-
 }

@@ -4,7 +4,7 @@
 <div class="main" >
   <nav class="navbar navbar-expand-lg">
     <ul>
-      <li style="color:orange;font-family:Varela Round;font-weight:medium;color:white"><a routerLink="/LabTest">Lab Test</a></li>
+      <!-- <li style="color:orange;font-family:Varela Round;font-weight:medium;color:white"><a routerLink="/LabTest">Lab Test</a></li> -->
         <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Dashboard" >Dashboard</a></li>
         <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/BookAppoinment" >Book Appointment</a></li>
         <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Profile" routerLinkActive="active" >Profile</a></li>
@@ -51,6 +51,8 @@
               placeholder="{{name}}"
               name="name"
               formControlName="pname"
+              [(ngModel)]="name"
+              readonly
             /></div>
             <span
               style="color: red"
@@ -67,7 +69,8 @@
                   class="w3-input"
                   placeholder="{{age}}"
                   name="age"
-                 value="{{agee}}"
+                 
+                 [(ngModel)]="age"
                   formControlName="page"/></div>
                   <span
                       style="color: red"
@@ -84,6 +87,7 @@
                   name="gender"
                   id="gender"
                   class="w3-input"
+                  [(ngModel)]="gender"
                   formControlName="pgender"
                   >
                   <option value="Male">Male</option>
@@ -99,14 +103,13 @@
               </div>
           </div>
   
-          
-  
           <div class="form-group">
             <div id = "Member"><label>Phone Number:</label>
             <input
               type="text"
               class="w3-input"
               placeholder="{{mobile}}"
+              [(ngModel)]="mobile"
               name="mobile"
               formControlName="pmobile"
             /></div>
@@ -130,6 +133,7 @@
                 class="w3-input"
                 placeholder="{{emailid}}"
                 name="emailid"
+                [(ngModel)]="emailid"
                 formControlName="pemailid"
               /></div>
               <span style="color: red" *ngIf="pemailid?.errors && pemailid?.touched">
@@ -139,12 +143,13 @@
             </div>
           <div class="form-row">
             <div class="form-group col-md-12">
-              <div id = "Member"> <label for="exampleInputEmail1">City:</label>
+              <div id = "Member"> <label for="exampleInputEmail1" >City:</label>
               <input
-                
                 placeholder="{{city}}"
                 class="w3-input"
+                [(ngModel)]="city"
                 formControlName="pcity"
+                
               /></div>
               <span style="color: red"
                 *ngIf="pcity?.errors && pcity?.touched">
@@ -157,7 +162,7 @@
               <select
                 name="state"
                 id="state"
-                readonly
+                [(ngModel)]="state"
                 class="w3-input"
                 formControlName="pstate">
                 <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -200,7 +205,6 @@
             </div>
               <span
                 style="color: red"
-                class=""
                 *ngIf="pstate?.errors && pstate?.touched">
                 <span *ngIf="pstate?.errors?.required">State is Required</span>
               </span>

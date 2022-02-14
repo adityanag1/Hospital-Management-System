@@ -17,9 +17,7 @@ export class EmailService {
     })
   }
   email(emailid:string,name:string,adate:string,adesc:string,atime:string,dname:string): Observable<Appoinment> {
-    // console.log('Email service')
-    // let url=this.ApiUrl+"?recipientFirstName="+recipientFirstName
-    // console.log(url)
+    
     let url=this.ApiUrl+"?Emailid="+emailid+"&Name="+name+"&adate="+adate+"&adesc="+adesc+"&atime="+atime+"&dname="+dname
     
     return this.httpClient.post<Appoinment>(url, this.httpOptions)

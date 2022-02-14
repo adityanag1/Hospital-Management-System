@@ -47,11 +47,17 @@ export class DashboardComponent implements OnInit {
   patientemailid!: string;
   patientname!: string;
   filelist:any[]=[];
+  editapp: any[]=[];
+  // cdate!: string;
 
-  constructor(public service6:FileService ,public service5:EmailService ,public service4:DoctorloginService, private formbuilder: FormBuilder,public router: Router,public service2:PatientloginService,public service1:AppService,public service3:DoctorloginService) { }
+  constructor(public service6:FileService ,public service5:EmailService ,public service4:DoctorloginService, private formbuilder: FormBuilder,public router: Router,public service2:PatientloginService,public service1:AppService,public service3:DoctorloginService) {
+    // this.service1.getAppById(this.aid).subscribe(res=>{
+    //   console.log(res)
+    //   this.adate=res.adate
+    // })
+  }
 
   ngOnInit(): void {
-
 
     let patient=this.service2.getPatient()
     let patientdetails:Patient=patient
@@ -86,10 +92,10 @@ export class DashboardComponent implements OnInit {
       // this.yesapp=true;
       this.count2list=data.filter(a=>a.patientId===patient.patientId);
       
-      this.count3list=this.count2list.filter(a=>a.adate>=this.date);
-      this.count3list=this.count3list.reverse();
+      this.count3list=this.count2list.filter(a=>a.adate>this.date);
+      // this.count3list=this.count3list.reverse();
       
-      this.countlist=this.count2list.filter(a=>a.adate<this.date);
+      this.countlist=this.count2list.filter(a=>a.adate<=this.date);
       this.countlist=this.countlist.reverse();
 
       console.log(this.count3list)
@@ -108,13 +114,16 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  
-
   EditApp(aid:number){
+    console.log(aid)
+    console.log(this.count3list.filter(a=>a.aid==aid))
+    this.editapp=this.count3list.filter(a=>a.aid==aid)
+    // if(this.count3list==this.count3list.filter(a=>a.aid===aid)){
     this.flipcard=true;
     this.yesapp=false;
-    console.log(this.count3list)
+    console.log(this.editapp)
     console.log(aid)
+    // }
     this.ConForm = this.formbuilder.group({      
       desc:['',[Validators.required]],
       tdate:['',[Validators.required]],
@@ -141,7 +150,7 @@ console.log(this.ConForm.value)
     this.yesapp=true;
     this.aid=aid
     console.log(this.ConForm.value)
-    console.log(this.count3list)
+    console.log(this.editapp)
     this.service4.getDr().subscribe(res => {
       console.log(res);
       console.log(JSON.stringify(res));
@@ -173,7 +182,7 @@ console.log(this.ConForm.value)
         console.log(res)
         this.data=this.ConForm.value
         // this.service4.email()  
-        this.service5.email(this.patientemailid,this.patientname,this.ConForm.value.adate,this.ConForm.value.adesc,this.ConForm.value.atime,this.ConForm.value.dname).subscribe(res=>{
+        this.service5.email(this.patientemailid,this.patientname,this.adate,this.adesc,this.atime,this.ConForm.value.tname).subscribe(res=>{
           console.log(res)
         })
         location.reload();
@@ -181,8 +190,15 @@ console.log(this.ConForm.value)
       })
     })
   }
+  cancel1(){
+    this.print=false;
+    this.beforeapp=true;
+    // location.reload();
+  }
   cancel(){
-    location.reload();
+    this.flipcard=false;
+    this.yesapp=true;
+    // location.reload();
   }
   GetFile(aid:number){
     this.aid=aid

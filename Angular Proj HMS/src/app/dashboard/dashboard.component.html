@@ -5,7 +5,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-fixed-top">
   <ul>
-    <li style="color:orange;font-family:Varela Round;font-weight:medium;color:white"><a routerLink="/LabTest">Lab Test</a></li>
+    <!-- <li style="color:orange;font-family:Varela Round;font-weight:medium;color:white"><a routerLink="/LabTest">Lab Test</a></li> -->
       <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Dashboard" routerLinkActive="active" >Dashboard</a></li>
       <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/BookAppoinment" >Book Appointment</a></li>
       <li style="color:orange;font-family :Varela Round;font-weight:medium;color:white"><a routerLink="/Profile" >Profile</a></li>
@@ -50,7 +50,7 @@ font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;marg
 </div>
 
 <div  class="row mb-3" *ngIf = "flipcard==true">
-  <article class="col-md-3 col-sm-6 mx-0 mt-2 mb-4" *ngFor="let count3list of count3list" >  
+  <article class="col-md-3 col-sm-6 mx-0 mt-2 mb-4" *ngFor="let editapp of editapp" >  
   <!-- <br> -->
   <div  class="card " style="padding: 20px; border: 1px solid #c9c9c9; border-radius: 20px;border-color: orange;background-color: white;margin-left:20px; text-align: left">
   <div id = "Tag" style="margin-top:10px" style="text-align:center;font-size:25px; color:orange;">Edit Appointment</div>
@@ -66,7 +66,8 @@ font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;marg
           <input
             type="text"
             class="w3-input"
-            placeholder="{{count3list.adesc}}"
+            placeholder="{{editapp.adesc}}"
+            [(ngModel)]="adesc"
             formControlName="desc"
           />
           <span
@@ -81,6 +82,7 @@ font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;marg
             <input
               type="date"
               class="w3-input"
+              [(ngModel)]="adate"
               formControlName="tdate"
             />
             <span
@@ -96,6 +98,7 @@ font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;marg
             name="timeslot"
             id="gender"
             class="w3-input"
+            [(ngModel)]="atime"
             formControlName="time"
             style="font-family:Varela Round;">
             <option value="11.00-11.30">11.00-11.30</option>
@@ -117,6 +120,7 @@ font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;marg
         <label  style="font-family:Varela Round;">Dr Name:</label>
         <select
         class="w3-input"
+        [(ngModel)]="dname"
         formControlName="tname"
         style="font-family:Varela Round;">
         <ng-container *ngFor = "let tname of namelist">
@@ -130,7 +134,7 @@ font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;marg
         </span>
     </div>
       <div class="text-center"><button class="btn btn-white text-center" 
-        [disabled]="ConForm.invalid" (click)="SaveChange(count3list.aid)">Save</button>
+        [disabled]="ConForm.invalid" (click)="SaveChange(editapp.aid)">Save</button>
       <button (click)="cancel()">Cancel</button>
       </div>
     </form>
@@ -196,8 +200,8 @@ font-family :Varela Round;font-weight: bold;font-size:25px;margin-left:25px;marg
 
     
       <!-- [routerLink]="['/GenerateFile',count2list.patientId,count2list.aid]" -->
-      <div class="text-center"><a  class="btn btn-secondary"  (click)="convetToPDF()">Get File</a>
-       
+      <div class="text-center"><a  class="btn btn-secondary"  (click)="convetToPDF()">Get File</a>&nbsp;
+        <a  class="btn btn-secondary"  (click)="cancel1()">Cancel</a>  
         <!-- <button  class="btn btn-secondary"  (click)="convetToPDF()">Download</button> -->
       </div>
   </div>

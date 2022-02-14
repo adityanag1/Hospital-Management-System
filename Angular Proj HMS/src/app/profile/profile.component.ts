@@ -25,7 +25,17 @@ export class ProfileComponent implements OnInit {
   editprofile:boolean=false;
 ConForm: any;
 
-  constructor(private formbuilder: FormBuilder,public router: Router,public service3:PatientloginService) { }
+  constructor(private formbuilder: FormBuilder,public router: Router,public service3:PatientloginService) { 
+    let patient=this.service3.getPatient()
+    let patientdetails:Patient=patient
+    this.name=patientdetails.name
+    this.age=patientdetails.age
+    this.gender=patientdetails.gender
+    this.mobile=patientdetails.mobile
+    this.emailid=patientdetails.emailid
+    this.city=patientdetails.city
+    this.state=patientdetails.state
+  }
 
   ngOnInit(): void {
 
@@ -103,7 +113,7 @@ ConForm: any;
         mobile:this.ConForm.value.pmobile,
         emailid:this.ConForm.value.pemailid,
         city:this.ConForm.value.pcity,
-        state:this.ConForm.value.pname,
+        state:this.ConForm.value.pstate,
         password:patientdetails.password
       }
       console.log(data)

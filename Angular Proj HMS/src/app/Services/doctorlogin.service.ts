@@ -19,9 +19,11 @@ export class DoctorloginService {
       'Content-Type': 'application/json'
     })
   }
+
   getUser(id:number): Observable<Doctor> {
     return this.httpClient.get<Doctor>(this.getUrl+"?id="+id) 
   } 
+
   getbyemail(email: string): Observable<Doctor> {
     console.log("hello I am in getall");
     let url = this.emailUrl +"?email=" +email
@@ -38,16 +40,20 @@ export class DoctorloginService {
   
   Login(doctor: Doctor): Observable<Doctor> {
     return this.httpClient.post<Doctor>(this.ApiUrl, JSON.stringify(doctor), this.httpOptions)
-  }   
+  }
+
   getDoctor(){
     let doctordetails:any=sessionStorage.getItem('doctor')
     let doctor=JSON.parse(doctordetails)
     return doctor 
-  } 
+  }
+
   setDoctor(doctor: Doctor){
     sessionStorage.setItem('doctor',JSON.stringify(doctor))
   }
+
   getDr(): Observable<Doctor[]> {
-    return this.httpClient.get<Doctor[]>(this.getdr ) 
+    return this.httpClient.get<Doctor[]>(this.getdr) 
   }
+  
 }
